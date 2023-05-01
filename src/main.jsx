@@ -6,11 +6,13 @@ import Main from './Layouts/Main/Main.jsx'
 import Home from './Layouts/Home/Home'
 import Register from './Components/Register/Register'
 import Login from './Components/Login/Login'
+import ErrorPage from './Components/Error/ErrorPage'
 
 const router = createBrowserRouter([
   {
     path:'/',
     element: <Main></Main>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path:'/',
