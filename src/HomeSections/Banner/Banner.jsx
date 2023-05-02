@@ -9,7 +9,7 @@ const Banner = () => {
                     <div className="max-w-md">
                         <h1 className="mb-5 text-5xl font-bold">Hello there!</h1>
                         <p className="mb-5">We Know You Need to know About Best Chef Information. We Provide Updated List About Chef</p>
-                        <button className="btn btn-primary">Get Started</button>
+                        <button className="btn btn-primary">Explore</button>
                     </div>
                 </div>
             </div>
