@@ -30,7 +30,7 @@ const Nabvar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/register' className="btn text-orange-200">Get started</Link>
+                <Link to='/register' className="btn text-orange-200">Register</Link>
             </div>
         </div>
     );

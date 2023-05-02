@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaGoogle,FaGithub } from "react-icons/fa";
 
 const Register = () => {
     const handleSubmit = event => {
@@ -51,8 +52,8 @@ const Register = () => {
                         </div>
                         <div>
                             <p className='text-center text-xl'>Or</p>
-                            <button className='btn  btn-outline btn-primary w-full my-2'>Continue With Google</button>
-                            <button className='btn  btn-outline btn-warning w-full'>Continue With Google</button>
+                            <button className='btn  btn-outline btn-primary w-full my-2'><FaGoogle></FaGoogle> <span className='ml-3'>Continue With Google</span> </button>
+                            <button className='btn  btn-outline btn-warning w-full'> <FaGithub></FaGithub> <span className='ml-3'> Continue With Github</span></button>
                         </div>
                     </form>
                 </div>
