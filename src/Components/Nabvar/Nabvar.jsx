@@ -32,7 +32,7 @@ const Nabvar = () => {
             </div>
             <div className="navbar-end">
                 {user &&
-                    <><button onClick={LogoutUser} className='btn btn-danger'>Logout</button></>}
+                    <><button className='btn btn-danger'>Logout</button></>}
                 {!user &&
                     <> <Link to='/login'><button className='btn btn-danger'>Login</button></Link> </>}
 

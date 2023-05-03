@@ -1,6 +1,6 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import app from '../Firebase/firebase.config';
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 
 export const AuthContex = createContext(null);
 const auth = getAuth(app)
@@ -55,9 +55,15 @@ const AuthProvider = ({children}) => {
         .catch(error=>{
             SetError(error.message);
         })
-
     }
 
+    useEffect(()=>{
+        const unsubcrive = onAuthStateChanged(auth,loggedUser=>{
+            console.log('Logged In User On ',loggedUser);
+            setUser(loggedUser)
+        })
+        return unsubcrive;
+    },[])
 
 
     const AuthInfo = {
