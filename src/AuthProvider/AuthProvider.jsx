@@ -5,7 +5,7 @@ import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword,
 export const AuthContex = createContext(null);
 const auth = getAuth(app)
 const googleProvider = new GoogleAuthProvider();
-const gihubProvider = new GithubAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({children}) => {
     const [user,setUser] = useState(null)
@@ -47,7 +47,7 @@ const AuthProvider = ({children}) => {
 
     // continueWithGithub
     const ContinueWithGithub = ()=>{
-        signInWithPopup(auth,GithubAuthProvider)
+        signInWithPopup(auth,githubProvider)
         .then(result=>{
             console.log('Login User SuccesFully ', result.user);
             SetError(null)
