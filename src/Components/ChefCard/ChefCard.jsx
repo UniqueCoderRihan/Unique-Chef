@@ -5,7 +5,7 @@ const ChefCard = ({chef}) => {
     const {name,age,id,numberOfRecipes,yearsOfExperience,description,rating,imageUrl,likes} = chef;
     return (
         <div className="card w-96 glass">
-                <figure><img className='w-50' src={imageUrl} alt="car!" /></figure>
+                <figure><img className='w-50' loading="lazy" src={imageUrl} alt="Man or Women pick!" /></figure>
                 <div className="card-body">
                     <div>
                     <h2 className="card-title">{name}</h2>
