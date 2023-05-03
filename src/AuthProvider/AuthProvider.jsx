@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import app from '../Firebase/firebase.config';
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 
 export const AuthContex = createContext(null);
 const auth = getAuth(app)
@@ -65,6 +65,12 @@ const AuthProvider = ({children}) => {
             SetError(error.message)
         })
     }
+    // Logout User
+    const LogoutUser=()=>{
+        signOut(auth)
+        .then()
+        .catch()
+    }
 
     useEffect(()=>{
         const unsubcrive = onAuthStateChanged(auth,loggedUser=>{
@@ -83,7 +89,8 @@ const AuthProvider = ({children}) => {
         ContinueWithGoogle,
         ContinueWithGithub,
         SetError,
-        handleForget
+        handleForget,
+        LogoutUser
         
     }
 

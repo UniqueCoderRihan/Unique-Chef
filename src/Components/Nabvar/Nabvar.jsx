@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContex } from '../../AuthProvider/AuthProvider';
 
 const Nabvar = () => {
-    const { user } = useContext(AuthContex);
+    const { user,LogoutUser } = useContext(AuthContex);
     return (
         <div className="navbar bg-secondary">
             <div className="navbar-start">
@@ -32,7 +32,7 @@ const Nabvar = () => {
             </div>
             <div className="navbar-end">
                 {user &&
-                    <><button className='btn btn-danger'>Logout</button></>}
+                    <><button onClick={LogoutUser} className='btn btn-danger'>Logout</button></>}
                 {!user &&
                     <> <Link to='/login'><button className='btn btn-danger'>Login</button></Link> </>}
 
