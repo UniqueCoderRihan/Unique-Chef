@@ -14,7 +14,7 @@ const AuthProvider = ({children}) => {
         createUserWithEmailAndPassword(auth,email,password)
         .then(result=>{
             setUser(result.user)
-            SetError(null)
+            SetError('')
             
         })
         .catch(error=>{
@@ -27,7 +27,7 @@ const AuthProvider = ({children}) => {
         signInWithEmailAndPassword(auth,email,password)
         .then(result=>{
             console.log('Login User SuccesFully ', result.user);
-            SetError(null)
+            SetError('')
         })
         .catch(error=>{
             SetError(error.message);
@@ -38,7 +38,7 @@ const AuthProvider = ({children}) => {
         signInWithPopup(auth,googleProvider)
         .then(result=>{
             console.log('Login User SuccesFully ', result.user);
-            SetError(null)
+            SetError('')
         })
         .catch(error=>{
             SetError(error.message);
@@ -50,7 +50,7 @@ const AuthProvider = ({children}) => {
         signInWithPopup(auth,githubProvider)
         .then(result=>{
             console.log('Login User SuccesFully ', result.user);
-            SetError(null)
+            SetError('')
         })
         .catch(error=>{
             SetError(error.message);

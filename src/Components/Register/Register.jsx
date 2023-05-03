@@ -1,18 +1,25 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaGoogle,FaGithub } from "react-icons/fa";
 import { AuthContex } from '../../AuthProvider/AuthProvider';
 
 const Register = () => {
     const {user,displayError,singUpWithEmail,ContinueWithGoogle,ContinueWithGithub} = useContext(AuthContex);
+    const [error,setError] = useState(null)
     const handleSubmit = event => {
+        setError(null)
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const fullName = form.fullName.value;
         const password = form.password.value;
-        // console.log(fullName,email,password);
-        singUpWithEmail(email,password)
+        if(password<6){
+            singUpWithEmail(email,password)
+        }
+        else{
+            setError('Your Password Must Be 6 or More Than 6 character')
+        }
+        
         
     }
     return (
@@ -28,25 +35,25 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Enter Your Full Name</span>
                             </label>
-                            <input type="text" placeholder="What Is Your Name?" className="input input-bordered" name='fullName' />
+                            <input required type="text" placeholder="What Is Your Name?" className="input input-bordered" name='fullName' />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Photo Url</span>
                             </label>
-                            <input type="text" placeholder="Put Link Here" className="input input-bordered" name='photoLink' />
+                            <input required type="text" placeholder="Put Link Here" className="input input-bordered" name='photoLink' />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" name='email' placeholder="email" className="input input-bordered" />
+                            <input required type="email" name='email' placeholder="email" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name='password' placeholder="password" className="input input-bordered" />
+                            <input required type="password" name='password' placeholder="password" className="input input-bordered" />
                             <label className="label">
                                 <p><small>Alredy have an Account? <Link className="label-text-alt link link-hover" to='/login'>Login</Link> </small></p>
                             </label>
@@ -55,7 +62,8 @@ const Register = () => {
                             <button type='submit' className="btn btn-primary">Register Now</button>
                         </div>
                         <div>
-                            <p>{displayError}</p>
+                            <p>{error && <>{error}</>}</p>
+                            <p>{displayError && <>{displayError}</>}</p>
                             <p className='text-center text-xl'>Or</p>
                             <button onClick={ContinueWithGoogle} className='btn  btn-outline btn-primary w-full my-2'><FaGoogle></FaGoogle> <span className='ml-3'>Continue With Google</span> </button>
                             <button onClick={ContinueWithGithub} className='btn  btn-outline btn-warning w-full'> <FaGithub></FaGithub> <span className='ml-3'> Continue With Github</span></button>
