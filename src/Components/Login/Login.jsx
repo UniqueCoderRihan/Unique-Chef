@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { FaGoogle,FaGithub } from "react-icons/fa";
 import { AuthContex } from '../../AuthProvider/AuthProvider';
 const Login = () => {
-    const {SignInExitingUser,user,displayError,ContinueWithGoogle,ContinueWithGithub} = useContext(AuthContex);
+    const {SignInExitingUser,SetError,user,displayError,ContinueWithGoogle,ContinueWithGithub} = useContext(AuthContex);
     const handleSubmit = event => {
         event.preventDefault();
+        SetError('')
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
@@ -33,7 +34,7 @@ const Login = () => {
                             </label>
                             <input type="password" placeholder="password" className="input input-bordered" name='password' />
                             <label className="label">
-                                <Link className="label-text-alt link link-hover">Forgot password?</Link>
+                                <Link to='/resetPassword' className="label-text-alt link link-hover">Forgot password?</Link>
                                 <Link to='/register' className="label-text-alt link link-hover">Are You new to? Register here</Link>
                             </label>
                         </div>

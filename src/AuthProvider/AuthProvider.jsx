@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import app from '../Firebase/firebase.config';
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 
 export const AuthContex = createContext(null);
 const auth = getAuth(app)
@@ -9,7 +9,7 @@ const githubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({children}) => {
     const [user,setUser] = useState(null)
-    const [displayError,SetError]= useState(null)
+    const [displayError,SetError]= useState('')
     const singUpWithEmail = (email,password)=>{
         createUserWithEmailAndPassword(auth,email,password)
         .then(result=>{
@@ -57,6 +57,15 @@ const AuthProvider = ({children}) => {
         })
     }
 
+    // forget PassWord 
+    const handleForget = email=>{
+        sendPasswordResetEmail(auth,email)
+        .then()
+        .catch(error=>{
+            SetError(error.message)
+        })
+    }
+
     useEffect(()=>{
         const unsubcrive = onAuthStateChanged(auth,loggedUser=>{
             console.log('Logged In User On ',loggedUser);
@@ -72,7 +81,9 @@ const AuthProvider = ({children}) => {
         displayError,
         user,
         ContinueWithGoogle,
-        ContinueWithGithub
+        ContinueWithGithub,
+        SetError,
+        handleForget
         
     }
 

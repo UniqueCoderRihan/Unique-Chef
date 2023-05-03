@@ -10,6 +10,7 @@ import ErrorPage from './Components/Error/ErrorPage'
 import LoginLayout from './Layouts/LoginAndRegister/LoginLayout'
 import Blog from './Components/Blogs/Blog'
 import AuthProvider from './AuthProvider/AuthProvider'
+import ForgetPassword from './Components/ForgetPassword/ForgetPassword'
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login></Login>
+      },
+      {
+        path: '/resetPassword',
+        element: <ForgetPassword></ForgetPassword>
       }
     ]
   }
