@@ -14,6 +14,8 @@ const AuthProvider = ({children}) => {
         createUserWithEmailAndPassword(auth,email,password)
         .then(result=>{
             setUser(result.user)
+            SetError(null)
+            
         })
         .catch(error=>{
             SetError(error.message)

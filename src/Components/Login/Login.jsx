@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaGoogle,FaGithub } from "react-icons/fa";
 import { AuthContex } from '../../AuthProvider/AuthProvider';
 const Login = () => {
-    const {SignInExitingUser,user} = useContext(AuthContex);
+    const {SignInExitingUser,user,displayError,ContinueWithGoogle,ContinueWithGithub} = useContext(AuthContex);
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
@@ -41,9 +41,10 @@ const Login = () => {
                             <button type='submit' className="btn btn-primary">Login</button>
                         </div>
                         <div>
+                            <p>{displayError}</p>
                             <p className='text-center text-xl'>Or</p>
-                            <button className='btn  btn-outline btn-primary w-full my-2'><FaGoogle></FaGoogle> <span className='ml-3'>Continue With Google</span> </button>
-                            <button className='btn  btn-outline btn-warning w-full'> <FaGithub></FaGithub> <span className='ml-3'> Continue With Github</span></button>
+                            <button onClick={ContinueWithGoogle} className='btn  btn-outline btn-primary w-full my-2'><FaGoogle></FaGoogle> <span className='ml-3'>Continue With Google</span> </button>
+                            <button onClick={ContinueWithGithub} className='btn  btn-outline btn-warning w-full'> <FaGithub></FaGithub> <span className='ml-3'> Continue With Github</span></button>
                         </div>
                     </form>
                 </div>

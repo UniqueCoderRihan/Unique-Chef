@@ -55,6 +55,7 @@ const Register = () => {
                             <button type='submit' className="btn btn-primary">Register Now</button>
                         </div>
                         <div>
+                            <p>{displayError}</p>
                             <p className='text-center text-xl'>Or</p>
                             <button onClick={ContinueWithGoogle} className='btn  btn-outline btn-primary w-full my-2'><FaGoogle></FaGoogle> <span className='ml-3'>Continue With Google</span> </button>
                             <button onClick={ContinueWithGithub} className='btn  btn-outline btn-warning w-full'> <FaGithub></FaGithub> <span className='ml-3'> Continue With Github</span></button>
