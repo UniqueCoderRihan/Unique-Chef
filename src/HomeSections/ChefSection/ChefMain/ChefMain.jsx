@@ -1,9 +1,19 @@
 import React from 'react';
+import ChefCard from '../../../Components/ChefCard/ChefCard';
 
-const ChefMain = () => {
+const ChefMain = ({chef}) => {
+    
     return (
         <div>
-            <h1>Hi This is Chef Section</h1>
+            <p className='text-center text-4xl font-bold p-2 text-pink-500'>Our Chefs</p>
+            <div className='grid md:grid-cols-3 p-5'>
+            {
+                chef.map(singleChef=> <ChefCard
+                key={singleChef.id}
+                chef={singleChef}
+                ></ChefCard>)
+            }
+        </div> 
         </div>
     );
 };
