@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FaGoogle,FaGithub } from "react-icons/fa";
+import { AuthContex } from '../../AuthProvider/AuthProvider';
 
 const Register = () => {
+    const {user,displayError,singUpWithEmail,ContinueWithGoogle,ContinueWithGithub} = useContext(AuthContex);
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const fullName = form.fullName.value;
         const password = form.password.value;
-        console.log(fullName,email,password);
+        // console.log(fullName,email,password);
+        singUpWithEmail(email,password)
+        
     }
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -52,8 +56,8 @@ const Register = () => {
                         </div>
                         <div>
                             <p className='text-center text-xl'>Or</p>
-                            <button className='btn  btn-outline btn-primary w-full my-2'><FaGoogle></FaGoogle> <span className='ml-3'>Continue With Google</span> </button>
-                            <button className='btn  btn-outline btn-warning w-full'> <FaGithub></FaGithub> <span className='ml-3'> Continue With Github</span></button>
+                            <button onClick={ContinueWithGoogle} className='btn  btn-outline btn-primary w-full my-2'><FaGoogle></FaGoogle> <span className='ml-3'>Continue With Google</span> </button>
+                            <button onClick={ContinueWithGithub} className='btn  btn-outline btn-warning w-full'> <FaGithub></FaGithub> <span className='ml-3'> Continue With Github</span></button>
                         </div>
                     </form>
                 </div>

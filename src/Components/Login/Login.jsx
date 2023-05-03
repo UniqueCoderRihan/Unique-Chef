@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FaGoogle,FaGithub } from "react-icons/fa";
+import { AuthContex } from '../../AuthProvider/AuthProvider';
 const Login = () => {
+    const {SignInExitingUser,user} = useContext(AuthContex);
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email,password);
+        // console.log(email,password);
+        SignInExitingUser(email,password)
     }
     return (
         <div className="hero min-h-screen bg-base-200">
