@@ -53,12 +53,12 @@ const router = createBrowserRouter([
   {
     path:'/recipe',
     element: <RecipeLayout></RecipeLayout>,
+    loader: ({params})=> fetch(`http://localhost:3000/recipe/${params.id}`),
     children: [
       {
         path: ':id',
         element: <RecipesDetails></RecipesDetails>,
-        // loader: ({params})=> fetch(`http://localhost:3000/recipe/${params.id}`)
-        
+        // 
       }
     ]
   }
