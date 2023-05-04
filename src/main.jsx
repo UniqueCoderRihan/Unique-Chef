@@ -11,6 +11,8 @@ import LoginLayout from './Layouts/LoginAndRegister/LoginLayout'
 import Blog from './Components/Blogs/Blog'
 import AuthProvider from './AuthProvider/AuthProvider'
 import ForgetPassword from './Components/ForgetPassword/ForgetPassword'
+import RecipeLayout from './Layouts/Recipe/RecipeLayout'
+import RecipesDetails from './Components/RecipesDetails/RecipesDetails'
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,7 @@ const router = createBrowserRouter([
         path: '/blog',
         element: <Blog></Blog>
       }
+      
     ]
   },
   {
@@ -44,6 +47,17 @@ const router = createBrowserRouter([
       {
         path: '/resetPassword',
         element: <ForgetPassword></ForgetPassword>
+      }
+    ]
+  },
+  {
+    path:'/recipe',
+    element: <RecipeLayout></RecipeLayout>,
+    children: [
+      {
+        path: ':id',
+        element: <RecipesDetails></RecipesDetails>,
+        loader: ({params})=> fetch(`http://localhost:3000/recipe/${params.id}`)
       }
     ]
   }

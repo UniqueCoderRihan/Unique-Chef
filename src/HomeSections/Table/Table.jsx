@@ -21,7 +21,7 @@ const Table = () => {
                 <input className='m-2 p-3 rounded-lg' type="date"  />
                 <input className='m-2 p-3 rounded-lg' type="time" />
             </div>
-            <button className='btn btn-primary w-50 text-2xl'>Find Chef  </button>
+            <button type='submit' className='btn btn-primary w-50 text-2xl'>Find Chef  </button>
         </div>
     );
 };
