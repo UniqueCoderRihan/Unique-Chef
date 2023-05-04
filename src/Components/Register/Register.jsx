@@ -13,7 +13,7 @@ const Register = () => {
         const email = form.email.value;
         const fullName = form.fullName.value;
         const password = form.password.value;
-        if(password<6){
+        if(password>6){
             singUpWithEmail(email,password)
         }
         else{
