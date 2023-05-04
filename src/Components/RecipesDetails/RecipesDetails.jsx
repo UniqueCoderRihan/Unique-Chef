@@ -1,11 +1,19 @@
 import React, { useEffect } from 'react';
-import { useLoaderData, useParams } from 'react-router-dom';
 
-const RecipesDetails = () => {
-    
+const RecipesDetails = ({ recipe }) => {
+    console.log(recipe);
+    const { name, description, ingredients, image } = recipe;
     return (
         <div>
-            <h1>This is Recipe Details Page</h1>
+            <div className="card card-compact w-96 bg-base-100 shadow-xl">
+                <figure><img src={image} alt="Shoes" /></figure>
+                <div className="card-body">
+                    <h2 className="card-title">{name}</h2>
+                    <p>Description: {description}</p>
+                    <p>Ingrediant: {ingredients}</p>
+                    
+                </div>
+            </div>
         </div>
     );
 };
