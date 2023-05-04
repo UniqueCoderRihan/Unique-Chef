@@ -1,8 +1,25 @@
 import React from 'react';
 
 const Blog = () => {
+    const onButtonClick = () => {
+        // using Java Script method to get PDF file
+        fetch('PDF.pdf').then(response => {
+            response.blob().then(blob => {
+                // Creating new object of PDF file
+                const fileURL = window.URL.createObjectURL(blob);
+                // Setting various property values
+                let alink = document.createElement('a');
+                alink.href = fileURL;
+                alink.download = 'React-to-PDF.pdf';
+                alink.click();
+            })
+        })
+    }
     return (
         <div>
+            <div className='my-3 '>
+                <button onClick={onButtonClick} className='btn'>Download Pdf</button>
+            </div>
             <div tabIndex={0} className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box">
                 <div className="collapse-title text-xl font-medium">
                1: Tell us the differences between uncontrolled and controlled components.
