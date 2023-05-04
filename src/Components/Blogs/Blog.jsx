@@ -2,7 +2,7 @@ import React from 'react';
 
 const Blog = () => {
     const onButtonClick = () => {
-        // using Java Script method to get PDF file
+       
         fetch('PDF.pdf').then(response => {
             response.blob().then(blob => {
                 // Creating new object of PDF file
