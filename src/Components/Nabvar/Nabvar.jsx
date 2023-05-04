@@ -4,6 +4,7 @@ import { AuthContex } from '../../AuthProvider/AuthProvider';
 
 const Nabvar = () => {
     const { user,LogoutUser } = useContext(AuthContex);
+    console.log(user);
     return (
         <div className="navbar bg-secondary">
             <div className="navbar-start">
@@ -43,16 +44,20 @@ const Nabvar = () => {
                     
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full className='mx-2'">
-                            <img src="https://scontent.fcgp32-1.fna.fbcdn.net/v/t39.30808-6/343562529_1850575275326196_3198939309385702606_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeGrtHVNj9AMag3gkBUFg6CJy46jFL_7pdDLjqMUv_ul0L2CYjCosXoa5BnsYfAcnga7047-kIA_eIeL0hYMF8cC&_nc_ohc=xGL05SUiNgcAX_JfGZ7&_nc_ht=scontent.fcgp32-1.fna&oh=00_AfB7eV56NXF9KZVPTudAzeX19Z2B8qQXcLaW6RC-VGx6xQ&oe=64544442" />
+                            {user?.photoURL &&
+                                <div>
+                                    <img src={user?.photoURL} alt="User Profile "/>
+                                </div>
+                            }
                         </div>
                     </label>
                 </ul>
             </div>
             <div className="navbar-end">
-                {user &&
-                    <><button onClick={LogoutUser} className='btn btn-danger'>Logout</button></>}
+                { user &&
+                    <button onClick={LogoutUser} className='btn btn-danger'>Logout</button>}
                 {!user &&
-                    <> <Link to='/login'><button className='btn btn-danger'>Login</button></Link> </>}
+                    <Link to='/login'><button className='btn btn-danger'>Login</button></Link>}
 
             </div>
         </div>

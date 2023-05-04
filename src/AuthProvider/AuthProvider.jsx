@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import app from '../Firebase/firebase.config';
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 
 export const AuthContex = createContext(null);
 const auth = getAuth(app)
@@ -71,7 +71,20 @@ const AuthProvider = ({children}) => {
         .then()
         .catch()
     }
+    // updated Profile
 
+    const updateProfileInfo=(imageLink,displayName)=>{
+        return updateProfile(auth.currentUser, {
+            displayName:{displayName},
+            photoURL: {imageLink}
+            .then(()=>{
+                console.log('Updated,', displayName);
+            })
+            .catch(error=>{
+                console.log(error.message);
+            })
+        })
+    }
     useEffect(()=>{
         const unsubcrive = onAuthStateChanged(auth,loggedUser=>{
             console.log('Logged In User On ',loggedUser);
@@ -90,7 +103,8 @@ const AuthProvider = ({children}) => {
         ContinueWithGithub,
         SetError,
         handleForget,
-        LogoutUser
+        LogoutUser,
+        updateProfileInfo
         
     }
 

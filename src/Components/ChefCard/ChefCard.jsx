@@ -19,7 +19,7 @@ const ChefCard = ({chef}) => {
                     
                     <div className="card-actions">
                         <p className='my-auto font-semibold'>Likes: {likes} </p>
-                        <button onClick={`/recipe/${id}`} className="btn btn-primary" > <span className='mr-2'> <Link to={`/recipe/${id}`}>View Recipes</Link> </span> <FaLongArrowAltRight></FaLongArrowAltRight> </button>
+                        <Link to={`/recipe/${id}`}><button className="btn btn-primary" > <span className='mr-2'> <Link to={`/recipe/${id}`}>View Recipes</Link> </span> <FaLongArrowAltRight></FaLongArrowAltRight> </button></Link>
                     </div>
                 </div>
             </div>

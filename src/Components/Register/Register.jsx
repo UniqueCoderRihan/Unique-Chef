@@ -4,7 +4,7 @@ import { FaGoogle,FaGithub } from "react-icons/fa";
 import { AuthContex } from '../../AuthProvider/AuthProvider';
 
 const Register = () => {
-    const {user,displayError,singUpWithEmail,ContinueWithGoogle,ContinueWithGithub} = useContext(AuthContex);
+    const {user,displayError,updateProfileInfo,singUpWithEmail,ContinueWithGoogle,ContinueWithGithub} = useContext(AuthContex);
     const [error,setError] = useState(null)
     const handleSubmit = event => {
         setError(null)
@@ -12,9 +12,11 @@ const Register = () => {
         const form = event.target;
         const email = form.email.value;
         const fullName = form.fullName.value;
+        const photoLink= form.photoLink.value;
         const password = form.password.value;
-        if(password>6){
+        if(password < 5){
             singUpWithEmail(email,password)
+            updateProfileInfo(photoLink,fullName)
         }
         else{
             setError('Your Password Must Be 6 or More Than 6 character')
@@ -35,13 +37,13 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Enter Your Full Name</span>
                             </label>
-                            <input required type="text" placeholder="What Is Your Name?" className="input input-bordered" name='fullName' />
+                            <input type="text" placeholder="What Is Your Name?" className="input input-bordered" name='fullName' />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Photo Url</span>
                             </label>
-                            <input required type="text" placeholder="Put Link Here" className="input input-bordered" name='photoLink' />
+                            <input type="text" placeholder="Put Link Here" className="input input-bordered" name='photoLink' />
                         </div>
                         <div className="form-control">
                             <label className="label">
