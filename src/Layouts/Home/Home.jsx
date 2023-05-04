@@ -7,7 +7,6 @@ import Table from '../../HomeSections/Table/Table';
 
 const Home = () => {
     const chef = useLoaderData();
-    
     return (
         <div>
             <Banner></Banner>

@@ -3,9 +3,10 @@ import { useLoaderData } from 'react-router-dom';
 
 const RecipesDetails = () => {
     const recipe = useLoaderData();
+    console.log(recipe);
     return (
         <div>
-            <h1>This is Rechipis Details</h1>
+            <h1>This is Recipe Details Page</h1>
         </div>
     );
 };

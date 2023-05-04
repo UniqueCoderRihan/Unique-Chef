@@ -11,7 +11,7 @@ const AuthProvider = ({children}) => {
     const [user,setUser] = useState(null)
     const [displayError,SetError]= useState('')
     const singUpWithEmail = (email,password)=>{
-        createUserWithEmailAndPassword(auth,email,password)
+        return createUserWithEmailAndPassword(auth,email,password)
         .then(result=>{
             setUser(result.user)
             SetError('')
@@ -24,7 +24,7 @@ const AuthProvider = ({children}) => {
     }
     // SignIn With Email and password
     const SignInExitingUser=(email,password)=>{
-        signInWithEmailAndPassword(auth,email,password)
+        return signInWithEmailAndPassword(auth,email,password)
         .then(result=>{
             console.log('Login User SuccesFully ', result.user);
             SetError('')
@@ -35,7 +35,7 @@ const AuthProvider = ({children}) => {
     }
     // ContinueWithGoogle
     const ContinueWithGoogle = ()=>{
-        signInWithPopup(auth,googleProvider)
+        return signInWithPopup(auth,googleProvider)
         .then(result=>{
             console.log('Login User SuccesFully ', result.user);
             SetError('')
@@ -47,7 +47,7 @@ const AuthProvider = ({children}) => {
 
     // continueWithGithub
     const ContinueWithGithub = ()=>{
-        signInWithPopup(auth,githubProvider)
+        return signInWithPopup(auth,githubProvider)
         .then(result=>{
             console.log('Login User SuccesFully ', result.user);
             SetError('')
@@ -59,7 +59,7 @@ const AuthProvider = ({children}) => {
 
     // forget PassWord 
     const handleForget = email=>{
-        sendPasswordResetEmail(auth,email)
+        return sendPasswordResetEmail(auth,email)
         .then()
         .catch(error=>{
             SetError(error.message)
@@ -67,7 +67,7 @@ const AuthProvider = ({children}) => {
     }
     // Logout User
     const LogoutUser=()=>{
-        signOut(auth)
+        return signOut(auth)
         .then()
         .catch()
     }
