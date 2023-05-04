@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaHeart, FaLongArrowAltRight, FaRegBookmark } from 'react-icons/fa';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Link } from 'react-router-dom';
 
 const ChefCard = ({ chef }) => {
+    const [loader,setloader] = useState(true);
     const { name, age, id, numberOfRecipes, yearsOfExperience, description, rating, imageUrl, likes } = chef;
-
+    
     return (
         <div className="card w-96 glass">
             <figure><LazyLoadImage
