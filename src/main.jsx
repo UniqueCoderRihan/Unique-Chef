@@ -24,7 +24,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader:()=> fetch('http://localhost:3000/chef')
+        loader:()=> fetch('https://uniuqe-chef-server-side.vercel.app/chef')
       },
       {
         path: '/blog',
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
   {
     path:'/recipe',
     element: <PrivateRoute><RecipeLayout></RecipeLayout></PrivateRoute>,
-    loader: ({params})=> fetch(`http://localhost:3000/recipe/${params.id}`),
+    loader: ({params})=> fetch(`https://uniuqe-chef-server-side.vercel.app/recipe/${params.id}`),
     children: [
       {
         path: ':id',
