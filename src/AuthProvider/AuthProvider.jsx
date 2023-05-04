@@ -10,17 +10,20 @@ const githubProvider = new GithubAuthProvider();
 const AuthProvider = ({children}) => {
     const [user,setUser] = useState(null)
     const [displayError,SetError]= useState('')
+    const [loader,setloader] = useState(true)
     const singUpWithEmail = (email,password)=>{
         return createUserWithEmailAndPassword(auth,email,password)
         .then(result=>{
             setUser(result.user)
             SetError('')
             
+            
         })
         .catch(error=>{
             SetError(error.message)
             console.log(error.message);
         });
+        setloader(true)
     }
     // SignIn With Email and password
     const SignInExitingUser=(email,password)=>{
@@ -28,10 +31,12 @@ const AuthProvider = ({children}) => {
         .then(result=>{
             console.log('Login User SuccesFully ', result.user);
             SetError('')
+            
         })
         .catch(error=>{
             SetError(error.message);
         })
+        setloader(true)
     }
     // ContinueWithGoogle
     const ContinueWithGoogle = ()=>{
@@ -39,10 +44,12 @@ const AuthProvider = ({children}) => {
         .then(result=>{
             console.log('Login User SuccesFully ', result.user);
             SetError('')
+            
         })
         .catch(error=>{
             SetError(error.message);
         })
+        setloader(true)
     }
 
     // continueWithGithub
@@ -51,10 +58,12 @@ const AuthProvider = ({children}) => {
         .then(result=>{
             console.log('Login User SuccesFully ', result.user);
             SetError('')
+            
         })
         .catch(error=>{
             SetError(error.message);
         })
+        setloader(true)
     }
 
     // forget PassWord 
@@ -70,6 +79,7 @@ const AuthProvider = ({children}) => {
         return signOut(auth)
         .then()
         .catch()
+        setloader(true)
     }
     // updated Profile
 
@@ -79,6 +89,7 @@ const AuthProvider = ({children}) => {
             photoURL: {imageLink}
             .then(()=>{
                 console.log('Updated,', displayName);
+                setloader(true)
             })
             .catch(error=>{
                 console.log(error.message);
@@ -89,6 +100,7 @@ const AuthProvider = ({children}) => {
         const unsubcrive = onAuthStateChanged(auth,loggedUser=>{
             console.log('Logged In User On ',loggedUser);
             setUser(loggedUser)
+            setloader(false)
         })
         return unsubcrive;
     },[])
@@ -104,7 +116,8 @@ const AuthProvider = ({children}) => {
         SetError,
         handleForget,
         LogoutUser,
-        updateProfileInfo
+        updateProfileInfo,
+        loader
         
     }
 
