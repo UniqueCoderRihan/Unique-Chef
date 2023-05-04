@@ -13,6 +13,7 @@ import AuthProvider from './AuthProvider/AuthProvider'
 import ForgetPassword from './Components/ForgetPassword/ForgetPassword'
 import RecipeLayout from './Layouts/Recipe/RecipeLayout'
 import RecipesDetails from './Components/RecipesDetails/RecipesDetails'
+import PrivateRoute from './PrivateRoutes/PrivateRoute'
 
 const router = createBrowserRouter([
   {
@@ -52,7 +53,7 @@ const router = createBrowserRouter([
   },
   {
     path:'/recipe',
-    element: <RecipeLayout></RecipeLayout>,
+    element: <PrivateRoute><RecipeLayout></RecipeLayout></PrivateRoute>,
     loader: ({params})=> fetch(`http://localhost:3000/recipe/${params.id}`),
     children: [
       {

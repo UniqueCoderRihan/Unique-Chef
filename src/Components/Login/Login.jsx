@@ -1,8 +1,12 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle,FaGithub } from "react-icons/fa";
 import { AuthContex } from '../../AuthProvider/AuthProvider';
 const Login = () => {
+    const navigate = useNavigate()
+    const location = useLocation();
+    
+    const from = location.state?.from?.pathname || '/';
     const {SignInExitingUser,SetError,user,displayError,ContinueWithGoogle,ContinueWithGithub} = useContext(AuthContex);
     const handleSubmit = event => {
         event.preventDefault();
